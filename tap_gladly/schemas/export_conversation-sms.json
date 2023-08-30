@@ -12,7 +12,8 @@
       "type": "object",
       "properties": {
         "content": {
-          "type": "string"
+          "type": "string",
+          "description": "sms message sent"
         },
         "to": {
           "type": "string"
@@ -35,17 +36,6 @@
       "type": "string"
     },
     "initiator": {
-      "type": "object",
-      "properties": {
-        "type": {
-          "type": "string"
-        },
-        "id": {
-          "type": "string"
-        }
-      }
-    },
-    "responder": {
       "type": "object",
       "properties": {
         "type": {
