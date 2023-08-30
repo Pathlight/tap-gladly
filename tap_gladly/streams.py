@@ -123,7 +123,7 @@ class ExportFileConversationItemsStream(ExportFile, abc.ABC):
             "chat_message": "export_conversation-chat_message.json",
             "conversation_note": "export_conversation-conversation_note.json",
             "topic_change": "export_conversation-topic_change.json",
-            "sms": "export_conversation-topic_change.json",
+            "sms": "export_conversation-sms.json",
             "conversation_status_change": "export_conversation-conversation_status_change.json",  # noqa
             "phone_call": "export_conversation-phone_call.json",
             "voicemail": "export_conversation-voicemail.json",
