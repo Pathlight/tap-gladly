@@ -321,3 +321,19 @@ class ReportsConversationTimestampsReportStream(gladlyStream):
         """Parse the response and return an iterator of result records."""
         gen_decoded_response = (line.decode("utf-8") for line in response.iter_lines())
         yield from csv.DictReader(gen_decoded_response)
+
+
+class TeamsStream(gladlyStream):
+    """List teams stream."""
+
+    name = "teams"
+    path = "/teams"
+    primary_keys = ["id"]
+    replication_key = None
+    # Optionally, you may also use `schema_filepath` in place of `schema`:
+    schema_filepath = SCHEMAS_DIR / "teams.json"
+
+    def parse_response(self, response: requests.Response) -> Iterable[dict]:
+        """Parse the response and return an iterator of result records."""
+        for line in response.iter_lines():
+            yield from extract_jsonpath(self.records_jsonpath, input=json.loads(line))

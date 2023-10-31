@@ -25,6 +25,7 @@ from tap_gladly.streams import (
     ExportFileConversationItemsWhatsapp,
     ExportFileCustomersStream,
     ExportFileTopicsStream,
+    TeamsStream,
     ReportsConversationTimestampsReportStream,
 )
 
@@ -48,6 +49,7 @@ STREAM_TYPES = [
     ExportFileCustomersStream,
     ReportsConversationTimestampsReportStream,
     ExportFileConversationItemsAllTypesStream,
+    TeamsStream,
 ]
 
 
