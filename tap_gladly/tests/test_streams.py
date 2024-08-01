@@ -16,7 +16,7 @@ SAMPLE_CONFIG = {
     "start_date": pendulum.now(),
     "username": "test",
     "password": "test",
-    "api_url_base": "api_base_url",
+    "domain": "https://domain.gladly.com",
 }
 
 
