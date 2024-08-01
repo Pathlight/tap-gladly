@@ -20,7 +20,7 @@ class ExportCompletedJobsStream(gladlyStream):
     """List export jobs stream."""
 
     name = "jobs"
-    path = "/export/jobs?status=COMPLETED"
+    path = "/api/v1/export/jobs?status=COMPLETED"
     primary_keys = ["id"]
     replication_key = None
     # Optionally, you may also use `schema_filepath` in place of `schema`:
@@ -74,7 +74,7 @@ class ExportFileAgentsStream(ExportFile):
     """Agent export stream."""
 
     name = "agents"
-    path = "/export/jobs/{job_id}/files/agents.jsonl"
+    path = "/api/v1/export/jobs/{job_id}/files/agents.jsonl"
     primary_keys = ["id"]
     replication_key = None
     parent_stream_type = ExportCompletedJobsStream
@@ -91,7 +91,7 @@ class ExportFileCustomersStream(ExportFile):
     """Customer export stream."""
 
     name = "customers"
-    path = "/export/jobs/{job_id}/files/customers.jsonl"
+    path = "/api/v1/export/jobs/{job_id}/files/customers.jsonl"
     primary_keys = ["id"]
     replication_key = None
     parent_stream_type = ExportCompletedJobsStream
@@ -108,7 +108,7 @@ class ExportFileTopicsStream(ExportFile):
     """Topic export conversation items stream."""
 
     name = "agents"
-    path = "/export/jobs/{job_id}/files/topics.jsonl"
+    path = "/api/v1/export/jobs/{job_id}/files/topics.jsonl"
     primary_keys = ["id"]
     replication_key = None
     parent_stream_type = ExportCompletedJobsStream
@@ -125,7 +125,7 @@ class ExportFileConversationItemsAllTypesStream(ExportFile):
     """Stream with all the conversations and content type."""
 
     name = "conversation_all_types"
-    path = "/export/jobs/{job_id}/files/conversation_items.jsonl"
+    path = "/api/v1/export/jobs/{job_id}/files/conversation_items.jsonl"
     primary_keys = ["id"]
     replication_key = None
     parent_stream_type = ExportCompletedJobsStream
@@ -144,7 +144,7 @@ class ExportFileConversationItemsStream(ExportFile, abc.ABC):
     """Abstract class, export conversation items stream."""
 
     name = "conversation_conversation_items"
-    path = "/export/jobs/{job_id}/files/conversation_items.jsonl"
+    path = "/api/v1/export/jobs/{job_id}/files/conversation_items.jsonl"
     primary_keys = ["id"]
     replication_key = None
     parent_stream_type = ExportCompletedJobsStream
@@ -219,10 +219,7 @@ class ExportFileConversationItemsSms(ExportFileConversationItemsStream):
 class ExportFileConversationItemsConversationStatusChange(
     ExportFileConversationItemsStream
 ):
-    """Export conversation items stream.
-
-    Where content type is conversation_status_change.
-    """
+    """Export conversation items stream where content type is conversation_status_change.""" # noqa
 
     name = "conversation_conversation_status_change"
     content_type = "conversation_status_change"
@@ -243,42 +240,42 @@ class ExportFileConversationItemsVoiceMail(ExportFileConversationItemsStream):
 
 
 class ExportFileConversationItemsCustomerActivity(ExportFileConversationItemsStream):
-    """Export conversation items stream where content type is voicemail."""
+    """Export conversation items stream where content type is a customer_activity."""
 
     name = "conversation_customer_activity"
     content_type = "customer_activity"
 
 
 class ExportFileConversationItemsFacebookMessage(ExportFileConversationItemsStream):
-    """Export conversation items stream where content type is voicemail."""
+    """Export conversation items stream where content type is facebook_message."""
 
     name = "conversation_facebook_message"
     content_type = "facebook_message"
 
 
 class ExportFileConversationItemsTwitter(ExportFileConversationItemsStream):
-    """Export conversation items stream where content type is voicemail."""
+    """Export conversation items stream where content type is twitter."""
 
     name = "conversation_twitter"
     content_type = "twitter"
 
 
 class ExportFileConversationItemsInstagramDirect(ExportFileConversationItemsStream):
-    """Export conversation items stream where content type is voicemail."""
+    """Export conversation items stream where content type is instagram_direct."""
 
     name = "conversation_instagram_direct"
     content_type = "instagram_direct"
 
 
 class ExportFileConversationItemsWhatsapp(ExportFileConversationItemsStream):
-    """Export conversation items stream where content type is voicemail."""
+    """Export conversation items stream where content type is whatsapp."""
 
     name = "conversation_whatsapp"
     content_type = "whatsapp"
 
 
 class ExportFileConversationItemsEmail(ExportFileConversationItemsStream):
-    """Export conversation items stream where content type is voicemail."""
+    """Export conversation items stream where content type is email."""
 
     name = "conversation_email"
     content_type = "email"
@@ -290,7 +287,7 @@ class ReportsConversationTimestampsReportStream(gladlyStream):
     rest_method = "POST"
 
     name = "reports__conversation_timestamps_report"
-    path = "/reports"
+    path = "/api/v1/reports"
     schema_filepath = SCHEMAS_DIR / "reports__conversation_timestamps_report.json"
 
     def prepare_request_payload(
@@ -327,7 +324,7 @@ class TeamsStream(gladlyStream):
     """List teams stream."""
 
     name = "teams"
-    path = "/teams"
+    path = "/api/v1/teams"
     primary_keys = ["id"]
     replication_key = None
     # Optionally, you may also use `schema_filepath` in place of `schema`:

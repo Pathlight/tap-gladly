@@ -98,10 +98,10 @@ class Tapgladly(Tap):
             " do not exist.",
         ),
         th.Property(
-            "api_url_base",
+            "domain",
             th.StringType,
             required=True,
-            description="The url for the API service",
+            description="The domain for the API service",
         ),
     ).to_dict()
 
